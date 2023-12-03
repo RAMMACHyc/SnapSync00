@@ -1,21 +1,13 @@
 
 import Post from  "../models/post"
 import {Types} from "mongoose";
-export const PostController = {
+export const PostController = {   
 
-  getPosts : async (req, res) => {
-        try {
-          const posts = await Post.find();
-          res.status(200).json(posts);
-        } catch (error) {
-          res.status(500).json({ message: error.message });
-        }
-      }, 
-
-      getPaginatedPosts : async (req, res) => {
+      getPosts : async (req, res) => {
         const { page } = req.query;
+           
         try {
-          const LIMIT = 3;
+          const LIMIT = 2;
           const startIndex = (Number(page) - 1) * LIMIT; 
           const total = await Post.countDocuments({});
           const posts = await Post.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
