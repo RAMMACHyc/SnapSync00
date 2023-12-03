@@ -1,0 +1,33 @@
+version: "3"
+services:
+  SnapSync_BackEnd:
+    image: node:16
+    container_name: SnapSync_BackEnd
+    working_dir: /app
+    command: npm run start:dev
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./SnapSync_BackEnd/:/app
+
+  SnapSync_FrontEnd:
+    image: node:16
+    container_name: SnapSync_FrontEnd
+    working_dir: /src
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./SnapSync_FrontEnd/:/src
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - ./mongo-data:/data/db  
+volumes:
+  - db-data:{}
+   
