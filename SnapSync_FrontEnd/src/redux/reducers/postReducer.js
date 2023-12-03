@@ -9,16 +9,13 @@ const initialState = {
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_POSTS:
-      return { ...state, posts: action.payload };
-
-      // case actionTypes.GET_PAGINATION_POSTS:
-      //   return {
-      //     ...state,
-      //     paginatedPosts: action.payload.data,
-      //     currentPage: action.payload.currentPage,
-      //     numberOfPages: action.payload.numberOfPages,
-      //   };
-
+      return {
+        ...state,
+        posts: action.payload.data, 
+        numberOfPages: action.payload.numberOfPages,
+      };
+     
+  
     case actionTypes.ADD_POST:
       return { ...state, posts: [...state.posts, action.payload.post] };
 

@@ -5,7 +5,6 @@ import { TextField, Button, Box, Paper } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost, selectPost, updatePost } from '../../redux/actions/postActions';
-import { img01 } from '../../assets/images/index'
 
 const FormComponent = () => {
   
@@ -100,7 +99,7 @@ const FormComponent = () => {
             Please Sign In to create your own posts and like other's posts.
           </Typography>
 
-          <img style={{ width: "100%", height: "400px" }} src={{ img01 }} alt="icon" />
+          {/* <img style={{ width: "50%", height: "200px" }} src="https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696455.jpg?size=626&ext=jpg&ga=GA1.1.655197956.1701302003&semt=ais" alt="icon" /> */}
 
         </Paper>
 

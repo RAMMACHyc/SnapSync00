@@ -76,7 +76,7 @@ const PostComponent = ({ post }) => {
       </CardContent>
       <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
-          disabled={!Auth?.result}
+          disabled={!Auth}
           onClick={likePostHandler}
         >
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -85,7 +85,7 @@ const PostComponent = ({ post }) => {
           </div>
         </Button>
 
-        {Auth?.result && (
+        {Auth && (
           <Button onClick={deletePostHandler}>
             <DeleteOutlineOutlinedIcon />
           </Button>

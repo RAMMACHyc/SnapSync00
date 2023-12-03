@@ -2,28 +2,15 @@
 import * as actionTypes from './actionTypes';
 import ApiService from '../Api/api';
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (currentPage) => async (dispatch) => {
     try {
-      const posts = await ApiService.getPosts();
+      const posts = await ApiService.getPosts(currentPage);
       dispatch({ type: actionTypes.GET_POSTS, payload: posts });
     } catch (error) {
       console.error('Error fetching posts:', error); 
     }
   };
 
-  // export const getPaginationPostsSuccess = (data) => ({
-  //   type: actionTypes.GET_PAGINATION_POSTS,
-  //   payload: data,
-  // });
-  // export const getPaginationPosts = (pageNumber) => async (dispatch) => {
-  //   try {
-  //     const posts = await ApiService.getPaginationPosts(pageNumber);
-  //     dispatch(getPaginationPostsSuccess(posts));
-  //   } catch (error) {
-  //     console.error('Error fetching paginated posts:', error);
-  //   }
-  // };
-   
 
 export const addPost = (data) => async (dispatch) => {
   try {

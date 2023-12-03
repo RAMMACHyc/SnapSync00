@@ -26,31 +26,25 @@ api.interceptors.request.use((req) => {
 const ApiService = {
   createPost: async (post) => {
     try {
-      const res = await api.post('/', post);
+      const res = await api.post('/posts', post);
       return res.data;
     } catch (error) {
       console.error('Error creating post:', error);
       throw error;
     }
   },
-  getPosts: async () => {
+
+  getPosts: async (currentPage) => {
     try {
-      const res = await api.get('/posts');
+      const res = await api.get(`/posts?page=${currentPage}`);
       return res.data;
     } catch (error) {
       console.error('Error getting posts:', error);
       throw error;
     }
   },
-  getPaginationPosts: async (pageNumber) => {
-    try {
-      const res = await api.get(`/posts?page=${pageNumber}`);
-      return res.data;
-    } catch (error) {
-      console.error('Error getting posts:', error);
-      throw error;
-    }
-  },
+
+  
   updatePost: async (postId,data) => {
     try {
       
